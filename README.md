@@ -808,3 +808,6 @@ Authentication → Upload authorization → File/ingest processing → Remote-lo
 
 The objective remains to identify where deeper testing should happen in later labs, not to force a vulnerability finding during attack-surface mapping.
 
+At this point we've mapped four major areas:
+
+Authentication → Upload authorization → File/ingest processing → Remote-login tokens → Book/object authorization
