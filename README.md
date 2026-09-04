@@ -1038,3 +1038,286 @@ External identity → existing local account matching, particularly the username
 
 That doesn't mean it's vulnerable. It means it's worth testing later under controlled conditions.
 
+Your earlier command: Get-ChildItem .\cps -Filter "*ldap*"
+
+returned no dedicated LDAP-named Python file, so we'll locate the actual authentication functions instead.
+
+Run this next: Select-String -Path .\cps\*.py -Pattern "ldap_bind|ldap_search|ldap_login|ldap_auth|LDAP" | Select-Object Path, LineNumber, Line
+
+This output found the actual LDAP login path.
+
+The most important discovery is that LDAP authentication is handled primarily in cps\web.py around lines 3025–3101. The code appears to validate the username, attempt LDAP authentication, optionally retrieve LDAP user details and auto-create a local account, and handle local fallback behavior.
+
+We also found a second LDAP authentication path in usermanagement.py, including LDAP authentication and automatic creation of new LDAP users
+
+**Inspect the main LDAP login flow**
+
+Let's examine web.py first. Run: Get-Content .\cps\web.py | Select-Object -Skip 3010 -First 110
+
+We're looking for this boundary:
+
+Username + Password
+
+        ↓
+        
+Username validation
+
+        ↓
+        
+LDAP authentication
+
+        ↓
+        
+LDAP accepted?
+
+   ↙             ↘
+   
+ Yes              No
+ 
+  ↓                ↓
+  
+Find local user   Failure / controlled fallback
+
+  ↓
+  
+Local user exists?
+
+ ↙             ↘
+ 
+Yes              No
+
+ ↓                ↓
+ 
+Login        LDAP auto-create enabled?
+
+                    ↓
+                    
+             Retrieve LDAP identity
+             
+                    ↓
+                    
+             Create local account
+             
+                    ↓
+                    
+                  Login
+
+One item is already worth noting for later: the search results show explicit local fallback behavior when LDAP is unavailable or rejects credentials. We need the surrounding code before deciding whether that's simply an intentional configuration feature or something that deserves deeper testing.
+
+No LDAP vulnerability has been identified. We're still mapping the authentication boundary.
+
+This confirms the main LDAP authentication flow, and there is one particularly important behavior to carry forward into later testing.
+
+The normal successful path is:
+
+Username + Password
+        ↓
+LDAP bind_user()
+        ↓
+LDAP authentication succeeds
+        ↓
+Does local account exist?
+      ↙        ↘
+    Yes         No
+     ↓           ↓
+   Login     Auto-create enabled?
+                 ↓
+          Get LDAP user details
+                 ↓
+          Create local account
+                 ↓
+               Login
+
+The code has several good controls: it rejects empty usernames, requires LDAP authentication before LDAP auto-provisioning, retrieves LDAP user information before creating a new account, excludes the Guest account from local fallback, and records failed LDAP authentication attempts.
+
+Important research candidate
+
+The most security-relevant behavior is this branch:
+
+elif login_result is False and user and user.password \
+        and check_password_hash(str(user.password), form['password']) \
+        and user.name != "Guest":
+
+This means that even when the LDAP server is reachable and explicitly rejects the credentials, Calibre-Web NextGen can still authenticate that account using its stored local password.
+
+That's different from fallback only when LDAP is unavailable.
+
+For our research notes:
+
+We should not classify this as an authentication bypass yet. It could be intentional design. But it creates a strong hypothesis for a later lab: if an administrator expects LDAP to be authoritative—for example, disabling an account in LDAP—could a pre-existing local password still allow that user to authenticate?
+
+That is exactly the kind of question we'll test safely against the local installation during dynamic validation.
+
+For Lab 3, we have mapped this boundary sufficiently.
+
+Next we will build the Final Attack Surface Map, where we'll combine everything we've identified—login, uploads, admin routes, object authorization, remote login, reverse-proxy authentication, OAuth/OIDC, and LDAP—into one portfolio-quality map.
+
+**Build the Final Attack Surface Map** 
+
+We’re going to consolidate everything we discovered into one final map. This will become one of the main portfolio artifacts for the lab.
+
+Our current map includes:
+
+Our four primary hypotheses going forward
+
+For later static and dynamic analysis, we've narrowed the large application down to four particularly useful areas:
+
+OIDC account matching — username/email matching before the external sub identity is ultimately associated with the local account.
+
+LDAP local fallback — LDAP can reject credentials while a valid stored local password may still authenticate the account.
+
+Read-status object authorization — the default edit_book_read_status() path did not visibly perform the same book-visibility check used elsewhere.
+
+Archive-status object authorization — change_archived_books() similarly did not visibly perform an object-visibility check.
+
+These are research hypotheses, not vulnerabilities.
+
+
+**Create the attack-surface document**
+
+Go back to the project root. Run: cd C:\Users\eelve\Vulnerability-Research-Lab
+
+Your prompt should then show:
+
+PS C:\Users\eelve\Vulnerability-Research-Lab>
+
+Then create/open the attack-surface notes file:
+
+notepad .\notes\attack-surface-map.md
+
+Now paste the following into attack-surface-map.md exactly as shown:
+
+Press Ctrl + S and close Notepad.
+
+Then return to PowerShell and run: Get-Content .\notes\attack-surface-map.md
+
+We want to verify that the file saved correctly before we commit it to Git.
+
+run: Get-Content .\notes\attack-surface-map.md -Encoding UTF8
+
+**Check Git status** 
+
+Run: git status
+
+This is a good catch. Do not run git add . because both notes/ and targets/ are untracked. We only want to add the Lab 3 attack-surface document right now.
+
+Run: git add .\notes\attack-surface-map.md
+
+What we want to see is approximately:
+
+Changes to be committed:
+
+  new file:   notes/attack-surface-map.md
+
+Untracked files:
+
+  targets/
+Then: git status
+
+The targets/ directory should remain untracked for now, especially because it contains the separately cloned Calibre-Web NextGen repository.
+
+That is exactly what we wanted. Your Git status shows:
+
+Notes/attack-surface-map.md — staged and ready
+
+Notes/target-selection.md — untracked
+
+Targets/ — untracked and not being committed
+
+Nothing unintended is staged
+
+**Commit the Lab 3 Attack Surface Map**
+
+Run: git commit -m "Document Lab 3 attack surface map"
+
+Then verify. Run: git status
+
+Perfect. That confirms the attack surface map was committed successfully. The only remaining untracked items are notes/target-selection.md and targets/, so the Lab 3 file is no longer listed as untracked or modified.
+
+**Final Review** 
+
+Before we close Lab 3, let's verify the commit itself.
+
+Run: git log --oneline -5
+
+We should see your new commit near the top:
+
+<commit-id> Document Lab 3 attack surface map
+
+Then we'll do the final Lab 3 review, document what you accomplished, and prepare to move into Lab 4 — Static Analysis, where we'll begin using the four research hypotheses to guide Semgrep, CodeQL, and manual source-code analysis.
+
+It's officially complete. Your Git history confirms:
+
+b4ec634  Document Lab 3 attack surface map
+
+8f5e89a  Add Semgrep static analysis tooling
+
+8eea2cf  Set up vulnerability research environment
+
+**Final Review**
+
+At this point, Lab 3 has accomplished what we wanted. You manually mapped the application before relying on scanners, identified the major authentication, authorization, file-handling, and identity trust boundaries, documented existing security controls, and narrowed the research to four hypotheses without incorrectly labeling any of them vulnerabilities.
+
+Your four candidates moving forward are:
+
+OAuth/OIDC account matching
+
+LDAP local-password fallback
+
+Read-status object authorization
+
+Archive-status object authorization
+
+One cleanup item before we close Lab 3
+
+Your git status previously showed:
+
+notes/target-selection.md
+
+targets/
+
+target-selection.md is your Lab 2 documentation, so we should get that properly committed too rather than leave it untracked.
+
+Run: git add .\notes\target-selection.md
+
+Then: git status
+
+We want target-selection.md staged while targets/ remains untracked.
+
+The screenshot confirms the cleanup is exactly where we want it:
+
+Notes/target-selection.md — staged
+
+Targets/ — remains untracked
+
+Lab 3 attack-surface map — already committed
+
+**Commit the Lab 2 documentation**
+
+Run: git commit -m "Document Lab 2 target selection"
+
+Then verify the repository: git status
+
+And check the history: git log --oneline -5
+
+Perfect. Both screenshots confirm the cleanup was successful.
+
+Your Git history now shows:
+
+8960eba  Document Lab 2 target selection
+
+b4ec634  Document Lab 3 attack surface map
+
+8f5e89a  Add Semgrep static analysis tooling
+
+8eea2cf  Set up vulnerability research environment
+
+Your git status shows only:
+
+Untracked files:
+
+    targets/
+
+That's intentional. The cloned Calibre-Web NextGen source repository remains separate from your main research repository.
+
+You successfully documented the application architecture, mapped authentication and authorization boundaries, analyzed file-upload handling, reviewed remote login, OAuth/OIDC, LDAP, and object-level authorization, and identified four areas for deeper investigation without prematurely calling them vulnerabilities.
