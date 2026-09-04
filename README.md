@@ -797,7 +797,9 @@ We don't call this a vulnerability. It simply gives us a good mapping question f
 
 **Trace the authorization helpers**
 
-Let's inspect the two functions called by these endpoints. Run: Select-String -Path .\cps\*.py -Pattern "def edit_book_read_status|def change_archived_books" |
+Let's inspect the two functions called by these endpoints. 
+
+Run: Select-String -Path .\cps\*.py -Pattern "def edit_book_read_status|def change_archived_books" |
 Select-Object Path, LineNumber, Line
 
 And: Select-String -Path .\cps\user_library.py -Pattern "def add_book|def remove_book|def removal_impact" | Select-Object LineNumber, Line
@@ -808,6 +810,231 @@ Authentication → Upload authorization → File/ingest processing → Remote-lo
 
 The objective remains to identify where deeper testing should happen in later labs, not to force a vulnerability finding during attack-surface mapping.
 
-At this point we've mapped four major areas:
+Run: Select-String -Path .\cps\*.py -Pattern "def edit_book_read_status|def change_archived_books" | Select-Object Path, LineNumber, Line
 
-Authentication → Upload authorization → File/ingest processing → Remote-login tokens → Book/object authorization
+Then: Select-String -Path .\cps\user_library.py -Pattern "def add_book|def remove_book|def removal_impact" |
+Select-Object LineNumber, Line
+
+We’re checking whether these helper functions enforce book-level access control, not just whether the user is logged in. After that, we’ll inspect the exact helper code and decide whether object-level authorization deserves deeper testing later.
+
+We found all five functions. Now we can inspecting only the relevant sections.
+
+Run: Get-Content .\cps\helper.py | Select-Object -Skip 900 -First 75
+
+Next: Get-Content .\cps\kobo_sync_status.py | Select-Object -Skip 460 -First 55
+
+Then: Get-Content .\cps\user_library.py | Select-Object -Skip 480 -First 145
+
+we're checking
+
+For each function, we're looking for this authorization chain:
+
+User-controlled book_id
+
+        ↓
+        
+Book lookup
+
+        ↓
+        
+Current-user association
+        ↓
+        
+Book visibility/access check
+
+        ↓
+        
+Operation permitted
+
+Specifically:
+
+We found 
+
+edit_book_read_status() → can the user modify only appropriate reading-state records?
+change_archived_books() → is archive state properly tied to the current user?
+add_book() → does it validate the requested book?
+remove_book() → does it operate only on the user's library?
+removal_impact() → does it expose information only about books the user should access?
+
+For edit_book_read_status(), the default branch binds the state change to current_user.id, which prevents one user from directly modifying another user's read-status row. However, in that branch I do not see a call to calibre_db.get_filtered_book() before creating or updating the ReadBook record. The custom-column branch does use get_filtered_book(book_id, True). That inconsistency is worth documenting, but it is not yet a vulnerability.
+
+Fhange_archived_books() also binds the archive record to current_user.id, but the code you pasted does not show a book visibility/access check before creating or updating the ArchivedBook row.
+
+This does not mean IDOR/BOLA is confirmed. It means we found inconsistent object-validation patterns that should become a priority in a later validation lab.
+
+We still need the third output
+
+Run: Get-Content .\cps\user_library.py | Select-Object -Skip 480 -First 145
+
+That completes the code review we needed
+
+What the user_library.py review shows
+
+add_book() has a strong object-level control. Before adding a book, _add_visible_book() checks the requested book_id against common_filters() for that specific user. If the book isn't visible to that user, the operation raises UserLibraryBookNotFound.
+
+remove_book() is also strongly user-bound. Its deletion requires both:
+
+ub.UserLibraryBook.user_id == user_id
+
+ub.UserLibraryBook.book_id == book_id
+
+So supplying another book ID does not let the caller remove another user's membership.
+
+removal_impact() follows the same pattern. It first verifies that the requested book belongs to the current user's library, and its shelf query is also restricted to that user's shelves.
+
+The important research result is not that we discovered an IDOR. We discovered an authorization-control inconsistency worth carrying forward:
+
+Some book-ID operations explicitly validate book visibility, while the default read-status and archive-state paths do not visibly perform equivalent validation within their helper functions.
+
+That becomes a testing hypothesis for later labs.
+
+We already mapped reverse-proxy authentication, so we'll focus primarily on OAuth/OIDC and LDAP.
+
+**Find the authentication code**
+
+Run: Select-String -Path .\cps\*.py -Pattern "oauth|oidc|ldap" | Select-Object Path, LineNumber, Line
+
+This may produce a lot of output. That's okay—we're initially locating the relevant files.
+
+Then run:Get-ChildItem .\cps -Filter "*oauth*"
+
+And: Get-ChildItem .\cps -Filter "*ldap*"
+
+What we're looking for
+
+We're mapping these trust boundaries:
+
+External Identity Provider
+
+        ↓
+        
+OAuth / OIDC / LDAP
+
+        ↓
+        
+Identity information received
+
+        ↓
+        
+Identity validated
+
+        ↓
+        
+Existing local user?
+
+     ↙        ↘
+     
+   Yes         No
+   
+    ↓           ↓
+    
+Login       Account creation?
+
+        ↓
+        
+Local authenticated session
+
+We specifically want to identify where the application validates external identity, how an external identity maps to a local account, whether automatic account creation exists, and whether privileges are assigned during that process.
+
+The search worked and already narrowed the important code significantly.
+
+For OAuth/OIDC, the most important file is clearly cps\oauth_bb.py. It contains the generic OIDC session, claim handling, group-access authorization, user registration, user-info retrieval, and local-account mapping logic.
+
+For LDAP, configuration and validation logic appears in admin.py, including provider URL, authentication settings, service-account configuration, group filtering, and user-object configuration.
+
+**Inspect OAuth/OIDC identity mapping**
+
+Run: Get-Content .\cps\oauth_bb.py | Select-Object -Skip 320 -First 150
+
+This should show us the code around:
+
+register_user_from_generic_oauth()
+
+        ↓
+        
+OIDC userinfo retrieval
+
+        ↓
+        
+Claim extraction
+
+        ↓
+        
+Existing-user matching
+
+        ↓
+        
+Group authorization
+
+        ↓
+        
+Local account creation/linking
+
+        ↓
+        
+Role assignment
+
+We're especially interested in how an externally supplied OIDC identity becomes associated with a local Calibre-Web account. That's a major authentication trust boundary.
+
+this gives us the key OAuth/OIDC trust-boundary logic we needed.
+
+The flow is:
+
+OIDC provider
+   ↓
+Access token
+   ↓
+userinfo endpoint
+   ↓
+Required claims: username + sub
+   ↓
+Existing local account lookup
+   ↓
+Group authorization check
+   ↓
+Role assignment / account creation
+   ↓
+OAuth binding + local session
+
+A few controls stand out.
+
+First, the application does not blindly trust a username alone. It requires both a mapped username field and the OIDC sub claim before continuing. That is a positive control because sub is intended to be the provider-side stable subject identifier.
+
+Second, group authorization happens before account creation or login. The code explicitly checks the configured group claim and can reject the login before provisioning a user. That is a strong boundary.
+
+Third, admin role assignment is conditional. A user only gets admin from the configured admin group when config_enable_oauth_group_admin_management is enabled. Otherwise, the user gets the configured default OAuth role. That reduces accidental privilege escalation from group claims.
+
+The most interesting area for later testing is account matching. When not linking an already-authenticated user, the code first tries:
+
+ub.User.name == provider_username
+
+and if that fails, it falls back to:
+
+ub.User.email == provider_email
+
+That is important because external identity → existing local account matching is a sensitive trust boundary. We are not calling it a vulnerability, but it is worth deeper validation later, especially around whether the identity provider guarantees the email claim is verified and unique.
+
+We still need the rest of the function because your output cuts off right after:
+
+# Apply default user settings
+
+Run: Get-Content .\cps\oauth_bb.py | Select-Object -Skip 450 -First 120
+
+That should finish the provisioning and OAuth-binding logic. After that, we can close the OAuth portion and move to LDAP authentication mapping.
+
+the second half completes the OAuth/OIDC mapping.
+
+The application creates new OAuth users with configured default permissions and restrictions, rather than automatically giving broad privileges. For existing users, admin privileges can be granted or revoked based on current OIDC group membership, but only when OAuth group-based admin management is enabled.
+
+Most importantly, after the local user is determined, the application creates or retrieves an OAuth record using both the provider ID and provider_user_id (sub), then associates that OAuth identity with the local user. That's an important security control.
+
+OAuth/OIDC conclusion
+
+No confirmed vulnerability.
+
+Our main deeper-testing candidate remains:
+
+External identity → existing local account matching, particularly the username/email fallback that occurs before the OAuth sub is ultimately bound to the account.
+
+That doesn't mean it's vulnerable. It means it's worth testing later under controlled conditions.
+
