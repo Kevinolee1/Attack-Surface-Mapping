@@ -601,6 +601,8 @@ Then: Select-String -Path .\cps\ub.py -Pattern "auth_token|expiration|RemoteAuth
 Once you know the class's line number, we'll display the actual class. For example, if PowerShell says it starts around line 900, we'd use:
 Get-Content .\cps\ub.py | Select-Object -Skip 890 -First 70
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/e8aa17e88ad5dcd8fbb4954a14e3daf725871b3b/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20205746.png)
+
 Don't use 890 yet—use the line number your first command gives us.
 
 We're specifically looking for:
