@@ -243,6 +243,8 @@ So now the critical question is: Does upload_required correctly reject an anonym
 
 Run: Get-Content .\cps\editbooks.py | Select-Object -Skip 40 -First 45
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/3a971829b294f6db149679aa05edf8c8be96ebbf/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20195942.png)
+
 This should show both:
 
 upload_required
