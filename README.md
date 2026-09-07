@@ -335,6 +335,8 @@ Run: Get-Content .\cps\editbooks.py | Select-Object -Skip 100 -First 220
 
 Then search for filename handling. Run: Select-String -Path .\cps\editbooks.py -Pattern "secure_filename|filename|extension|mimetype" | Select-Object LineNumber, Line
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/2916aaca220557dcdf72638d9ba358d893a2c0b8/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20201918.png)
+
 And search for where uploaded files are written . Run: Select-String -Path .\cps\editbooks.py -Pattern "\.save\(|write\(|copy\(|move\(" | Select-Object LineNumber, Line
 
 What we're mapping
