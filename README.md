@@ -391,6 +391,8 @@ This should show the function around: uploaded_file.save(tmp_path)
 
 Then run: Get-Content .\cps\editbooks.py | Select-Object -Skip 2280 -First 90
 
+![image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/a247935eebc750624ea4df525350b0dba2764233/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20202747.png)
+
 This should show the separate code path around: requested_file.save(saved_filename)
 
 We want to answer one specific question:
