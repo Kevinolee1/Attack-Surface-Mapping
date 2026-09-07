@@ -385,6 +385,8 @@ That second path is worth tracking separately because it may represent a differe
 
 Run:Get-Content .\cps\editbooks.py | Select-Object -Skip 500 -First 80
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/cf4b9b7551ed6725d79cc4ae80c5ba0805031620/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20202635.png)
+
 This should show the function around: uploaded_file.save(tmp_path)
 
 Then run: Get-Content .\cps\editbooks.py | Select-Object -Skip 2280 -First 90
