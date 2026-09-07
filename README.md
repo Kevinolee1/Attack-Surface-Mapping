@@ -115,6 +115,8 @@ authentication → authorization → uploads → APIs → admin functions → da
 
 Then run: Select-String -Path .\cps\*.py -Pattern "@.*route" | Select-Object Path, LineNumber, Line
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/93b4becc6891c89c87323308beeef3cf4d08ef77/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20150514.png)
+
 This searches the source code for web route definitions.
 
 **Map Authentication and Authorization**
