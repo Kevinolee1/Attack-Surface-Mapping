@@ -87,6 +87,8 @@ git status
 
 inspect cps first because it appears to be the primary application directory. Run: Get-ChildItem .\cps
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/a528089bdd878cbb81d83b19b0a36056e5b0944b/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20145246.png)
+
 Then let's identify the Python source files. run: Get-ChildItem .\cps -Filter *.py
 
 Next, look at the application's Python configuration. Run: Get-Content .\pyproject.toml
