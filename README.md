@@ -13,6 +13,9 @@ Now run: Get-ChildItem
 This removes the individual files and lets us concentrate on the major directories.
 
 Identify important project files run: Get-ChildItem -File
+
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/4f3da4ee7d616f3e0400a9374c51e528c6093cf5/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20105354.png)
+
 We're looking for things such as:
 
 README files
