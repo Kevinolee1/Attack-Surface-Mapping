@@ -447,6 +447,8 @@ Add this to your Lab 3 attack-surface notes
 
 The main data flow we've mapped is now:
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/213aa5fec66f918542388a396cdf0e6a7e05a655/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20203829.png)
+
 Authenticated/authorized user
 
         ↓
