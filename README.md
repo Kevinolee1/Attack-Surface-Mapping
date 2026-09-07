@@ -3,6 +3,8 @@ Analyzed Calibre-Web NextGen’s application structure to identify security-sens
 
 Start from PowerShell and make sure you're inside the target: cd C:\Users\eelve\Vulnerability-Research-Lab\targets\Calibre-Web-NextGen
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/c55d00a5d37e9e0c39964cf330918fb73a4833d7/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20104951.png)
+
 Your prompt should look similar to: (.venv) PS C:\Users\eelve\Vulnerability-Research-Lab\targets\Calibre-Web-NextGen>
 
 Now run: Get-ChildItem
