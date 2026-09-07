@@ -91,9 +91,10 @@ inspect cps first because it appears to be the primary application directory. Ru
 
 Then let's identify the Python source files. run: Get-ChildItem .\cps -Filter *.py
 
-![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/0eab0f6d01518f8a2d1be82868c1f4f9b3cbaba0/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20145535.png)
 
 Next, look at the application's Python configuration. Run: Get-Content .\pyproject.toml
+
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/0eab0f6d01518f8a2d1be82868c1f4f9b3cbaba0/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20145535.png)
 
 And check the application's recorded version. Run: Get-Content .\VERSION
 
