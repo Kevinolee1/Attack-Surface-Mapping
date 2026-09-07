@@ -139,6 +139,8 @@ And the upload route. Run: Get-Content .\cps\editbooks.py | Select-Object -Skip 
 
 What we're looking for
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/3513791d590720082ac6d8a6809ae1e164c4cb4c/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20200554.png)
+
 We're not trying to exploit anything yet. We're identifying whether sensitive routes have protections such as:
 
 Authentication required
