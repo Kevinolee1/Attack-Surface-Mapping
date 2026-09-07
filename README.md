@@ -131,6 +131,8 @@ Then check CSRF-related code: Select-String -Path .\cps\*.py -Pattern "csrf|CSRF
 
 Next, let's inspect the login code itself: Get-Content .\cps\web.py | Select-Object -Skip 2900 -First 140
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/2bd12c5c1d101310d95000d8efe5920c9c892a88/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20150741.png)
+
 And the upload route. Run: Get-Content .\cps\editbooks.py | Select-Object -Skip 90 -First 100
 
 What we're looking for
