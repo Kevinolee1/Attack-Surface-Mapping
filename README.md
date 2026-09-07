@@ -490,6 +490,8 @@ Run: Get-Content .\cps\remotelogin.py | Select-Object -First 170
 
 Then run: Select-String -Path .\cps\remotelogin.py -Pattern "token|random|verify|expire|delete|user_id" | Select-Object LineNumber, Line
 
+![Image alt](
+
 Here we're trying to understand:
 
 Remote login request
