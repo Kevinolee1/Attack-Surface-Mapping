@@ -249,6 +249,8 @@ This should show both:
 
 upload_required
 
+edit_required
+
 We also discovered another important attack surface: reverse-proxy authentication.
 
 The application can trust a configured HTTP header and use its value to identify an existing user:
