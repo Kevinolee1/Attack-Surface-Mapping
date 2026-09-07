@@ -486,6 +486,8 @@ Calibre library
 
 Run: Get-Content .\cps\remotelogin.py | Select-Object -First 170
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/6bf949329890519bcef91f7b2634b3f16cd07840/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20204111.png)
+
 Then run: Select-String -Path .\cps\remotelogin.py -Pattern "token|random|verify|expire|delete|user_id" | Select-Object LineNumber, Line
 
 Here we're trying to understand:
