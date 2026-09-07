@@ -490,7 +490,7 @@ Run: Get-Content .\cps\remotelogin.py | Select-Object -First 170
 
 Then run: Select-String -Path .\cps\remotelogin.py -Pattern "token|random|verify|expire|delete|user_id" | Select-Object LineNumber, Line
 
-![Image alt](
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/52d6a7bf03e83214cb7a36e58e8d3d00e107a0a3/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20204228.png)
 
 Here we're trying to understand:
 
