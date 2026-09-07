@@ -594,6 +594,8 @@ Those properties determine whether the token has sufficient entropy and an appro
 
 Run: Select-String -Path .\cps\ub.py -Pattern "class RemoteAuthToken" | Select-Object LineNumber, Line
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/823515ea7ee61c032b09b8d5ce388151b3b15862/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20205532.png)
+
 Then: Select-String -Path .\cps\ub.py -Pattern "auth_token|expiration|RemoteAuthToken" | Select-Object LineNumber, Line
 
 Once you know the class's line number, we'll display the actual class. For example, if PowerShell says it starts around line 900, we'd use:
