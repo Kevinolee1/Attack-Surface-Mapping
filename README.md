@@ -188,6 +188,7 @@ That could eventually become an important research area, but an upload feature i
 
 From your current directory, run: Select-String -Path .\cps\*.py -Pattern "def upload_required|def edit_required|def admin_required" | Select-Object Path, LineNumber, Line
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/f4b5724a89be89cac01544b1423e882cb5ab5a58/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20194927.png)
 
 Then run: Get-Content .\cps\usermanagement.py | Select-Object -Skip 240 -First 90
 
