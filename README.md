@@ -8,6 +8,7 @@ Start from PowerShell and make sure you're inside the target: cd C:\Users\eelve\
 Your prompt should look similar to: (.venv) PS C:\Users\eelve\Vulnerability-Research-Lab\targets\Calibre-Web-NextGen>
 
 Now run: Get-ChildItem
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/82a5c813bea72585e270e6356a314e0da08f1cc0/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20105156.png)
 
 This removes the individual files and lets us concentrate on the major directories.
 
