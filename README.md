@@ -36,6 +36,8 @@ security documentation
 
 Confirm our baseline hasn't changed Run: git status
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/6818f5fa31df0143cfa97c6b38d5ef496a4ae981/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20105628.png)
+
 We still want:
 
 On branch main
