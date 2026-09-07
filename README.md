@@ -339,6 +339,8 @@ Then search for filename handling. Run: Select-String -Path .\cps\editbooks.py -
 
 And search for where uploaded files are written . Run: Select-String -Path .\cps\editbooks.py -Pattern "\.save\(|write\(|copy\(|move\(" | Select-Object LineNumber, Line
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/e7e93b33f51134077d74af3fb0ceafce226145c7/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20202012.png)
+
 What we're mapping
 
 Uploaded file
