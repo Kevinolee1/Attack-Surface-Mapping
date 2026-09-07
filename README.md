@@ -192,6 +192,8 @@ From your current directory, run: Select-String -Path .\cps\*.py -Pattern "def u
 
 Then run: Get-Content .\cps\usermanagement.py | Select-Object -Skip 240 -First 90
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/9622050a056986975a96e956fda6b8db75c306d7/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20195125.png)
+
 And: Get-Content .\cps\admin.py | Select-Object -Skip 105 -First 50
 
 We're specifically trying to determine whether the authorization chain really behaves like:
