@@ -77,6 +77,7 @@ Get-ChildItem -Directory
 Get-ChildItem -File
 
 git status
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/4cd13057f5fcc6c54d0224162693cc47aa9739ad/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20110405.png)
 
 **Identify the Application Architecture**
 
