@@ -99,6 +99,8 @@ Next, look at the application's Python configuration. Run: Get-Content .\pyproje
 
 And check the application's recorded version. Run: Get-Content .\VERSION
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/56ef1cdb43fd034dbadef169efe974b5e9c74734/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20145704.png)
+
 **Find the Security-Sensitive Components**
 
 Now let's start mapping what the Python application actually does.
