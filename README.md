@@ -637,6 +637,8 @@ That means the remote-login token uses 16 random bytes, which becomes a 32-chara
 
 Our current assessment is:
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/f3b59735209d166e805994e3c1dbf6c669d69f19/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20210229.png)
+
 We are going to make one correction since the last Get-Content command used -Skip 890, so it displayed the wrong part of ub.py. Since the class starts at line 2197, run this instead:
 
 Get-Content .\cps\ub.py | Select-Object -Skip 2190 -First 45
