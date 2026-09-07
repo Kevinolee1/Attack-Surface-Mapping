@@ -105,6 +105,8 @@ Now let's start mapping what the Python application actually does.
 
 Run this first: Get-ChildItem .\cps -Filter *.py | Select-Object Name
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/b41677d680f5eb33e28063006d3d4df79c770ac3/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20150012.png)
+
 We're looking for filenames related to things like:
 
 authentication → authorization → uploads → APIs → admin functions → database → file handling
