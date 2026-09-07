@@ -275,7 +275,7 @@ That makes the reverse-proxy boundary security-sensitive. Again, we have not fou
 
 Let's inspect the rest of that function too. Run: Get-Content .\cps\usermanagement.py | Select-Object -Skip 284 -First 115
 
-I[Image alt](
+I[Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/5769e64dd76c9ba1199aff2c257b2866499d193c/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20200306.png)
 
 Your attack-surface map is now developing into this
 
