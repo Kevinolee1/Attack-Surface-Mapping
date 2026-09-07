@@ -135,6 +135,8 @@ Next, let's inspect the login code itself: Get-Content .\cps\web.py | Select-Obj
 
 And the upload route. Run: Get-Content .\cps\editbooks.py | Select-Object -Skip 90 -First 100
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/46461f7a7ef17b221d3f1ab4bdf6ffb0b1c98c52/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20150902.png)
+
 What we're looking for
 
 We're not trying to exploit anything yet. We're identifying whether sensitive routes have protections such as:
