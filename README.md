@@ -79,6 +79,9 @@ Get-ChildItem -File
 git status
 ![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/4cd13057f5fcc6c54d0224162693cc47aa9739ad/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20110405.png)
 ![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/0eebcd37216a76330687474f10f5dd56c6cc4797/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20110418.png)
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/e3f73fb7c0e71bd127d1090f0bbcea60fe284082/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20110446.png)
+
+
 **Identify the Application Architecture**
 
 inspect cps first because it appears to be the primary application directory. Run: Get-ChildItem .\cps
