@@ -331,6 +331,8 @@ We now understand who is supposed to be allowed to upload. Next we need to under
 
 Run: Get-Content .\cps\editbooks.py | Select-Object -Skip 100 -First 220
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/c03f365f3b856cf5d8cd693ca235247995f14c78/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20201625.png)
+
 Then search for filename handling. Run: Select-String -Path .\cps\editbooks.py -Pattern "secure_filename|filename|extension|mimetype" | Select-Object LineNumber, Line
 
 And search for where uploaded files are written . Run: Select-String -Path .\cps\editbooks.py -Pattern "\.save\(|write\(|copy\(|move\(" | Select-Object LineNumber, Line
