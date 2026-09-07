@@ -196,6 +196,9 @@ Then run: Get-Content .\cps\usermanagement.py | Select-Object -Skip 240 -First 9
 
 And: Get-Content .\cps\admin.py | Select-Object -Skip 105 -First 50
 
+
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/ad1aea47179cb8cbd721821649b684f89a090b8e/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20195357.png)
+
 We're specifically trying to determine whether the authorization chain really behaves like:
 
 HTTP Request
