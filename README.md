@@ -1043,6 +1043,8 @@ For LDAP, configuration and validation logic appears in admin.py, including prov
 
 Run: Get-Content .\cps\oauth_bb.py | Select-Object -Skip 320 -First 150
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/a9cc68f703f46b4c002f0dbae61c156b017fd44c/Attack%20Surface%20Mapping/Screenshot%202026-09-03%20214120.png)
+
 This should show us the code around:
 
 register_user_from_generic_oauth()
