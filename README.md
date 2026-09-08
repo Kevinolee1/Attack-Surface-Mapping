@@ -918,6 +918,8 @@ Then: Get-Content .\cps\user_library.py | Select-Object -Skip 480 -First 145
 
 ![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/6ea1b87798306a930b2ce0e7ad146d89e286bd7c/Attack%20Surface%20Mapping/Screenshot%202026-09-03%20205142.png)
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/17a8d33c729b81a77644b26f87e9324dd3734e1f/Attack%20Surface%20Mapping/Screenshot%202026-09-03%20205922.png)
+
 we're checking
 
 For each function, we're looking for this authorization chain:
