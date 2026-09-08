@@ -718,6 +718,8 @@ Start with:
 
 Select-String -Path .\cps\*.py -Pattern "book_id.*current_user|current_user.*book_id" | Select-Object Path, LineNumber, Line
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/981bb88c7754d66308c5768db6466dbf768c82ed/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20211941.png)
+
 Then: Select-String -Path .\cps\editbooks.py -Pattern "get_book\(book_id\)|filter.*book_id|book_id ==" | Select-Object LineNumber, Line
 
 We're looking for the distinction between:
