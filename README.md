@@ -977,6 +977,10 @@ So supplying another book ID does not let the caller remove another user's membe
 
 removal_impact() follows the same pattern. It first verifies that the requested book belongs to the current user's library, and its shelf query is also restricted to that user's shelves.
 
+Final assessment:
+
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/d43be8cdac27a7a99caf7bd0643fbc4ea3cca546/Attack%20Surface%20Mapping/Screenshot%202026-09-03%20211144.png)
+
 The important research result is not that we discovered an IDOR. We discovered an authorization-control inconsistency worth carrying forward:
 
 Some book-ID operations explicitly validate book visibility, while the default read-status and archive-state paths do not visibly perform equivalent validation within their helper functions.
