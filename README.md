@@ -1323,7 +1323,8 @@ Run: git add .\notes\attack-surface-map.md
 
 Then: git status
 
-![Image alt](
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/edcec79df0e8ee5c601bd42461edcf63512785b7/Attack%20Surface%20Mapping/Screenshot%202026-09-04%20181322.png)
+
 What we want to see is approximately:
 
 Changes to be committed:
