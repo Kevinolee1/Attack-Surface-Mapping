@@ -1310,6 +1310,8 @@ We want to verify that the file saved correctly before we commit it to Git.
 
 run: Get-Content .\notes\attack-surface-map.md -Encoding UTF8
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/050082368c505ff7eab0e5f9b521452b7268a76f/Attack%20Surface%20Mapping/Screenshot%202026-09-04%20181055.png)
+
 **Check Git status** 
 
 Run: git status
