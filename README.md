@@ -131,6 +131,8 @@ Run this first: Select-String -Path .\cps\*.py -Pattern "login_required|admin_re
 
 Then check CSRF-related code: Select-String -Path .\cps\*.py -Pattern "csrf|CSRF" | Select-Object Path, LineNumber, Line
 
+![image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/54949adb0347df280747184e1b4093ba4cf23c6a/Screenshot%202026-09-07%20232853.png)
+
 Next, let's inspect the login code itself: Get-Content .\cps\web.py | Select-Object -Skip 2900 -First 140
 
 ![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/2bd12c5c1d101310d95000d8efe5920c9c892a88/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20150741.png)
