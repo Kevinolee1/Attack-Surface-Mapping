@@ -702,6 +702,10 @@ login_user(user)
     
 Token deleted
 
+Remote Logic ID assessment:
+
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/20ae8db09b164096b05dfb554e030426b9a5b785/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20210936.png)
+
 There is one additional field, token_type, that we haven't fully traced. We saw earlier that expired-token cleanup treats some token types differently, so it's worth documenting later, but there's no reason to stay stuck on this component during attack-surface mapping.
 
 Remote-login attack surface: mapped. No vulnerability identified at this stage.
