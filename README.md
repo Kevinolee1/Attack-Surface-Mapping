@@ -1432,6 +1432,8 @@ Then verify the repository: git status
 
 And check the history: git log --oneline -5
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/9f4b3c9e35c97063243007a654c1fddf88d35e84/Attack%20Surface%20Mapping/Screenshot%202026-09-04%20183155.png)
+
 Perfect. Both screenshots confirm the cleanup was successful.
 
 Your Git history now shows:
