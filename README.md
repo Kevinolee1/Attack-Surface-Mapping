@@ -1266,6 +1266,8 @@ We’re going to consolidate everything we discovered into one final map. This w
 
 Our current map includes:
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/876072c29f9be74ce757911f072063a7635e3107/Attack%20Surface%20Mapping/Screenshot%202026-09-04%20174915.png)
+
 Our four primary hypotheses going forward
 
 For later static and dynamic analysis, we've narrowed the large application down to four particularly useful areas:
