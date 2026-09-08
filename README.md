@@ -768,6 +768,8 @@ First, inspect that resolver: Get-Content .\cps\cover_preview_blueprint.py | Sel
 
 Then inspect the main book-editing flow around the match at line 1003: Get-Content .\cps\editbooks.py | Select-Object -Skip 980 -First 90
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/17fd94eee783a741a0d262c03b321c139b44b540/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20213409.png)
+
 Finally, your search results show a large concentration of user/book logic near the beginning of web.py. Let's inspect that region:
 Get-Content .\cps\web.py | Select-Object -Skip 300 -First 180
 
