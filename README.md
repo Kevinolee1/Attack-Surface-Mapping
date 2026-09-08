@@ -1300,7 +1300,7 @@ Then create/open the attack-surface notes file: notepad .\notes\attack-surface-m
 Now paste the following into attack-surface-map.md exactly as shown:
 ![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/d1dec24cd643d43a6bd84215af5878a7dd4a5633/Attack%20Surface%20Mapping/Screenshot%202026-09-04%20175732.png)
 ![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/01602bc783096d01f21f28550f6311868bb72393/Attack%20Surface%20Mapping/Screenshot%202026-09-04%20175811.png)
-
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/637617295aa2a525610656a9b013c6364a1c6bfa/Attack%20Surface%20Mapping/Screenshot%202026-09-04%20175832.png)
 
 Press Ctrl + S and close Notepad.
 
