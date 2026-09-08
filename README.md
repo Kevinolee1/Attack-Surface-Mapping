@@ -812,6 +812,7 @@ The source comments explicitly say this applies visibility restrictions includin
 More importantly, the primary book-editing function also uses that filtered lookup:
 
 book = calibre_db.get_filtered_book(
+
     book_id,
     
     allow_show_archived=True,
@@ -1080,19 +1081,32 @@ this gives us the key OAuth/OIDC trust-boundary logic we needed.
 The flow is:
 
 OIDC provider
+
    ↓
+   
 Access token
+
    ↓
+   
 userinfo endpoint
+
    ↓
+   
 Required claims: username + sub
+
    ↓
+   
 Existing local account lookup
+
    ↓
 Group authorization check
+
    ↓
+   
 Role assignment / account creation
+
    ↓
+   
 OAuth binding + local session
 
 A few controls stand out.
@@ -1148,7 +1162,7 @@ returned no dedicated LDAP-named Python file, so we'll locate the actual authent
 
 Run this next: Select-String -Path .\cps\*.py -Pattern "ldap_bind|ldap_search|ldap_login|ldap_auth|LDAP" | Select-Object Path, LineNumber, Line
 
-![Image alt](![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/95f44b4f55a57474754669f8befbf81d20cc88a1/Attack%20Surface%20Mapping/Screenshot%202026-09-03%20215511.png))
+![Image alt](![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/95f44b4f55a57474754669f8befbf81d20cc88a1/Attack%20Surface%20Mapping/Screenshot%202026-09-03%20215511.png)
 
 This output found the actual LDAP login path.
 
@@ -1217,21 +1231,37 @@ This confirms the main LDAP authentication flow, and there is one particularly i
 The normal successful path is:
 
 Username + Password
+
         ↓
+        
 LDAP bind_user()
+
         ↓
+        
 LDAP authentication succeeds
+
         ↓
+        
 Does local account exist?
+
       ↙        ↘
+      
     Yes         No
+    
      ↓           ↓
+     
    Login     Auto-create enabled?
+   
                  ↓
+                 
           Get LDAP user details
+          
                  ↓
+                 
           Create local account
+          
                  ↓
+                 
                Login
 
 The code has several good controls: it rejects empty usernames, requires LDAP authentication before LDAP auto-provisioning, retrieves LDAP user information before creating a new account, excludes the Guest account from local fallback, and records failed LDAP authentication attempts.
@@ -1355,6 +1385,8 @@ Run: git commit -m "Document Lab 3 attack surface map"
 ![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/65b2cb53cade6235d339782d68291c1fcfc4e23b/Attack%20Surface%20Mapping/Screenshot%202026-09-04%20181808.png)
 
 Then verify. Run: git status
+
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/652dba166251bbe02be11c7ad4c9c1ce3aa33c5a/Attack%20Surface%20Mapping/Screenshot%202026-09-04%20181941.png)
 
 Perfect. That confirms the attack surface map was committed successfully. The only remaining untracked items are notes/target-selection.md and targets/, so the Lab 3 file is no longer listed as untracked or modified.
 
