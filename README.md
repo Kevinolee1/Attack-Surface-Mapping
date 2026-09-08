@@ -1293,9 +1293,9 @@ Your prompt should then show:
 
 PS C:\Users\eelve\Vulnerability-Research-Lab>
 
-Then create/open the attack-surface notes file:
+Then create/open the attack-surface notes file: notepad .\notes\attack-surface-map.md
 
-notepad .\notes\attack-surface-map.md
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/9bfa4310e002dde5336b626d013a1c526b2ccf90/Attack%20Surface%20Mapping/Screenshot%202026-09-04%20175436.png)
 
 Now paste the following into attack-surface-map.md exactly as shown:
 
