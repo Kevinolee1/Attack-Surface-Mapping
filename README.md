@@ -1113,6 +1113,10 @@ ub.User.email == provider_email
 
 That is important because external identity → existing local account matching is a sensitive trust boundary. We are not calling it a vulnerability, but it is worth deeper validation later, especially around whether the identity provider guarantees the email claim is verified and unique.
 
+Current OAuth/OIDC assessment:
+
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/60cce90afe962b8d450dc6bc29a9627b3e8ed325/Attack%20Surface%20Mapping/Screenshot%202026-09-03%20214834.png)
+
 We still need the rest of the function because your output cuts off right after:
 
 # Apply default user settings
