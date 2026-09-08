@@ -764,6 +764,8 @@ The name strongly suggests the project already has explicit object-level access-
 
 First, inspect that resolver: Get-Content .\cps\cover_preview_blueprint.py | Select-Object -Skip 325 -First 55
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/33a36a543111d070c9211c70aa55a2ba4e2a317a/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20213232.png)
+
 Then inspect the main book-editing flow around the match at line 1003: Get-Content .\cps\editbooks.py | Select-Object -Skip 980 -First 90
 
 Finally, your search results show a large concentration of user/book logic near the beginning of web.py. Let's inspect that region:
