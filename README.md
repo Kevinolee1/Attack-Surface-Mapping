@@ -1364,6 +1364,8 @@ Before we close Lab 3, let's verify the commit itself.
 
 Run: git log --oneline -5
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/3603913ec264457e77bdee9219a4fec41ab14b5e/Attack%20Surface%20Mapping/Screenshot%202026-09-04%20182229.png)
+
 We should see your new commit near the top:
 
 <commit-id> Document Lab 3 attack surface map
