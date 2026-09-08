@@ -885,6 +885,8 @@ Let's inspect the two functions called by these endpoints.
 Run: Select-String -Path .\cps\*.py -Pattern "def edit_book_read_status|def change_archived_books" |
 Select-Object Path, LineNumber, Line
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/9b97c45abc94222449887604d5783aa18037db65/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20214437.png)
+
 And: Select-String -Path .\cps\user_library.py -Pattern "def add_book|def remove_book|def removal_impact" | Select-Object LineNumber, Line
 
 At this point we've mapped four major areas:
