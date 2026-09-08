@@ -643,6 +643,8 @@ We are going to make one correction since the last Get-Content command used -Ski
 
 Get-Content .\cps\ub.py | Select-Object -Skip 2190 -First 45
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/d5b4c2a2f4908b19c690066efe89112b20b2f9bb/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20210446.png)
+
 That will let us see the entire RemoteAuthToken class, including default values such as verified, user_id, and any token_type behavior.
 
 What we confirmed
