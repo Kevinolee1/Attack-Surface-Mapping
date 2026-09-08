@@ -722,6 +722,8 @@ Select-String -Path .\cps\*.py -Pattern "book_id.*current_user|current_user.*boo
 
 Then: Select-String -Path .\cps\editbooks.py -Pattern "get_book\(book_id\)|filter.*book_id|book_id ==" | Select-Object LineNumber, Line
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/9bb7339ee3773343336155f06ae0646a4171bc07/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20214529.png)
+
 We're looking for the distinction between:
 
 User has EDIT permission
