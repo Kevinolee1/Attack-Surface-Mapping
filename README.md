@@ -1009,6 +1009,8 @@ Then run:Get-ChildItem .\cps -Filter "*oauth*"
 
 And: Get-ChildItem .\cps -Filter "*ldap*"
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/e791f0f20191d2756b945eabad037e25c2a5eaf6/Screenshot%202026-09-07%20233305.png)
+
 What we're looking for
 
 We're mapping these trust boundaries:
