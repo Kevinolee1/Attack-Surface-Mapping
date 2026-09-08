@@ -1150,6 +1150,8 @@ We still need the rest of the function because your output cuts off right after:
 
 Run: Get-Content .\cps\oauth_bb.py | Select-Object -Skip 450 -First 120
 
+![image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/2c50cbe85c14d04fdea474c964e7cc874c91c4e4/Screenshot%202026-09-07%20233338.png)
+
 That should finish the provisioning and OAuth-binding logic. After that, we can close the OAuth portion and move to LDAP authentication mapping.
 
 the second half completes the OAuth/OIDC mapping.
@@ -1170,7 +1172,6 @@ That doesn't mean it's vulnerable. It means it's worth testing later under contr
 
 Your earlier command: Get-ChildItem .\cps -Filter "*ldap*"
 
-
 returned no dedicated LDAP-named Python file, so we'll locate the actual authentication functions instead.
 
 Run this next: Select-String -Path .\cps\*.py -Pattern "ldap_bind|ldap_search|ldap_login|ldap_auth|LDAP" | Select-Object Path, LineNumber, Line
@@ -1186,6 +1187,8 @@ We also found a second LDAP authentication path in usermanagement.py, including 
 **Inspect the main LDAP login flow**
 
 Let's examine web.py first. Run: Get-Content .\cps\web.py | Select-Object -Skip 3010 -First 110
+
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/2c50cbe85c14d04fdea474c964e7cc874c91c4e4/Screenshot%202026-09-07%20233338.png)
 
 We're looking for this boundary:
 
