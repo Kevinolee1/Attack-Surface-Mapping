@@ -1005,6 +1005,8 @@ This may produce a lot of output. That's okay—we're initially locating the rel
 
 Then run:Get-ChildItem .\cps -Filter "*oauth*"
 
+![Image alt]()
+
 And: Get-ChildItem .\cps -Filter "*ldap*"
 
 What we're looking for
