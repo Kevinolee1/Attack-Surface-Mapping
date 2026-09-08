@@ -1336,6 +1336,8 @@ Untracked files:
   targets/
 Then: git status
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/b17e27ac1ee49ad5892c8bde52857cd1b6da8779/Screenshot%202026-09-07%20220855.png)
+
 The targets/ directory should remain untracked for now, especially because it contains the separately cloned Calibre-Web NextGen repository.
 
 That is exactly what we wanted. Your Git status shows:
