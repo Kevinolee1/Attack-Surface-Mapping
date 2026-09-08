@@ -773,6 +773,8 @@ Then inspect the main book-editing flow around the match at line 1003: Get-Conte
 Finally, your search results show a large concentration of user/book logic near the beginning of web.py. Let's inspect that region:
 Get-Content .\cps\web.py | Select-Object -Skip 300 -First 180
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/55436629e8edc1073aac2319c24be0546c081227/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20213514.png)
+
 We're comparing three things:
 
 Book ID supplied
