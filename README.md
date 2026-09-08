@@ -1424,6 +1424,8 @@ Lab 3 attack-surface map — already committed
 
 Run: git commit -m "Document Lab 2 target selection"
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/9a0ee3101dc0354f6b9da46a7d5d8bb08c637a3d/README.md)
+
 Then verify the repository: git status
 
 And check the history: git log --oneline -5
