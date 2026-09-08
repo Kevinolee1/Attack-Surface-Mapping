@@ -989,6 +989,8 @@ We already mapped reverse-proxy authentication, so we'll focus primarily on OAut
 
 Run: Select-String -Path .\cps\*.py -Pattern "oauth|oidc|ldap" | Select-Object Path, LineNumber, Line
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/8e08eb4735febecaf77b640219a4fea2e171af3a/Attack%20Surface%20Mapping/Screenshot%202026-09-03%20213228.png)
+
 This may produce a lot of output. That's okay—we're initially locating the relevant files.
 
 Then run:Get-ChildItem .\cps -Filter "*oauth*"
