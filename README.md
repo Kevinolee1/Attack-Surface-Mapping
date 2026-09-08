@@ -1287,6 +1287,8 @@ These are research hypotheses, not vulnerabilities.
 
 Go back to the project root. Run: cd C:\Users\eelve\Vulnerability-Research-Lab
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/7c9c226034ca61647e79447e077aaf431e3a4319/Attack%20Surface%20Mapping/Screenshot%202026-09-04%20175350.png)
+
 Your prompt should then show:
 
 PS C:\Users\eelve\Vulnerability-Research-Lab>
