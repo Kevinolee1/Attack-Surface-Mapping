@@ -1428,6 +1428,8 @@ Run: git commit -m "Document Lab 2 target selection"
 
 Then verify the repository: git status
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/f0dcfbc51c570008a4c69de5036bdc80b75686b4/Attack%20Surface%20Mapping/Screenshot%202026-09-04%20183026.png)
+
 And check the history: git log --oneline -5
 
 Perfect. Both screenshots confirm the cleanup was successful.
