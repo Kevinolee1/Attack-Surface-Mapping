@@ -889,6 +889,8 @@ Select-Object Path, LineNumber, Line
 
 And: Select-String -Path .\cps\user_library.py -Pattern "def add_book|def remove_book|def removal_impact" | Select-Object LineNumber, Line
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/33f6e96c2ebe0d434de7da27b7e0c118b00867f6/Attack%20Surface%20Mapping/Screenshot%202026-09-02%20214529.png)
+
 At this point we've mapped four major areas:
 
 Authentication → Upload authorization → File/ingest processing → Remote-login tokens → Book/object authorization
