@@ -1143,11 +1143,12 @@ That doesn't mean it's vulnerable. It means it's worth testing later under contr
 
 Your earlier command: Get-ChildItem .\cps -Filter "*ldap*"
 
-![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/95f44b4f55a57474754669f8befbf81d20cc88a1/Attack%20Surface%20Mapping/Screenshot%202026-09-03%20215511.png)
 
 returned no dedicated LDAP-named Python file, so we'll locate the actual authentication functions instead.
 
 Run this next: Select-String -Path .\cps\*.py -Pattern "ldap_bind|ldap_search|ldap_login|ldap_auth|LDAP" | Select-Object Path, LineNumber, Line
+
+![Image alt](![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/95f44b4f55a57474754669f8befbf81d20cc88a1/Attack%20Surface%20Mapping/Screenshot%202026-09-03%20215511.png))
 
 This output found the actual LDAP login path.
 
