@@ -1349,6 +1349,8 @@ Nothing unintended is staged
 
 Run: git commit -m "Document Lab 3 attack surface map"
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/65b2cb53cade6235d339782d68291c1fcfc4e23b/Attack%20Surface%20Mapping/Screenshot%202026-09-04%20181808.png)
+
 Then verify. Run: git status
 
 Perfect. That confirms the attack surface map was committed successfully. The only remaining untracked items are notes/target-selection.md and targets/, so the Lab 3 file is no longer listed as untracked or modified.
