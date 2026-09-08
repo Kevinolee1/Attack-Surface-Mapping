@@ -904,6 +904,8 @@ Run: Select-String -Path .\cps\*.py -Pattern "def edit_book_read_status|def chan
 Then: Select-String -Path .\cps\user_library.py -Pattern "def add_book|def remove_book|def removal_impact" |
 Select-Object LineNumber, Line
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/8d424a38a6e923a18d6874f9f6ebb9ecca87fb2c/Attack%20Surface%20Mapping/Screenshot%202026-09-03%20204916.png)
+
 We’re checking whether these helper functions enforce book-level access control, not just whether the user is logged in. After that, we’ll inspect the exact helper code and decide whether object-level authorization deserves deeper testing later.
 
 We found all five functions. Now we can inspecting only the relevant sections.
