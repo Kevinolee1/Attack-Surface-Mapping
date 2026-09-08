@@ -127,6 +127,8 @@ What prevents an unauthorized user from reaching these functions?
 
 Run this first: Select-String -Path .\cps\*.py -Pattern "login_required|admin_required|current_user" | Select-Object Path, LineNumber, Line
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/c1f5df6bdb26fe15a983925261058792d5b371f0/Screenshot%202026-09-07%20232809.png)
+
 Then check CSRF-related code: Select-String -Path .\cps\*.py -Pattern "csrf|CSRF" | Select-Object Path, LineNumber, Line
 
 Next, let's inspect the login code itself: Get-Content .\cps\web.py | Select-Object -Skip 2900 -First 140
