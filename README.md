@@ -1408,6 +1408,8 @@ Run: git add .\notes\target-selection.md
 
 Then: git status
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/99c1b9ebfdf4e6d5926324deb7f51c0f899cb164/Attack%20Surface%20Mapping/Screenshot%202026-09-04%20182657.png)
+
 We want target-selection.md staged while targets/ remains untracked.
 
 The screenshot confirms the cleanup is exactly where we want it:
