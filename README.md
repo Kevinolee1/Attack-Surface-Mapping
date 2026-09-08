@@ -1316,6 +1316,8 @@ run: Get-Content .\notes\attack-surface-map.md -Encoding UTF8
 
 Run: git status
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/0255d6543ef92d64cbed404e97df333a220d32b2/Attack%20Surface%20Mapping/Screenshot%202026-09-04%20181322.png)
+
 This is a good catch. Do not run git add . because both notes/ and targets/ are untracked. We only want to add the Lab 3 attack-surface document right now.
 
 Run: git add .\notes\attack-surface-map.md
