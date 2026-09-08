@@ -1319,6 +1319,7 @@ This is a good catch. Do not run git add . because both notes/ and targets/ are 
 Run: git add .\notes\attack-surface-map.md
 
 ![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/0c9a27c0b7c9d7c04ff9be587df4dba8623731b7/Attack%20Surface%20Mapping/Screenshot%202026-09-04%20180304.png)
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/65702aa9d726a110e8fac8b57d7afc081e6bfaf0/README.md)
 
 What we want to see is approximately:
 
