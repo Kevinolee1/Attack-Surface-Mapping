@@ -1335,7 +1335,6 @@ Changes to be committed:
 Untracked files:
 
   targets/
-Then: git status
 
 The targets/ directory should remain untracked for now, especially because it contains the separately cloned Calibre-Web NextGen repository.
 
