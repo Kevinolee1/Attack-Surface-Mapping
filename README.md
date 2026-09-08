@@ -1250,6 +1250,8 @@ That's different from fallback only when LDAP is unavailable.
 
 For our research notes:
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/42f70c9e7f70d5fb37365c7acea57d5b910bdae6/Attack%20Surface%20Mapping/Screenshot%202026-09-03%20221748.png)
+
 We should not classify this as an authentication bypass yet. It could be intentional design. But it creates a strong hypothesis for a later lab: if an administrator expects LDAP to be authoritative—for example, disabling an account in LDAP—could a pre-existing local password still allow that user to authenticate?
 
 That is exactly the kind of question we'll test safely against the local installation during dynamic validation.
