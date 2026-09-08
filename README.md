@@ -957,10 +957,6 @@ Fhange_archived_books() also binds the archive record to current_user.id, but th
 
 This does not mean IDOR/BOLA is confirmed. It means we found inconsistent object-validation patterns that should become a priority in a later validation lab.
 
-We still need the third output
-
-Run: Get-Content .\cps\user_library.py | Select-Object -Skip 480 -First 145
-
 That completes the code review we needed
 
 What the user_library.py review shows
