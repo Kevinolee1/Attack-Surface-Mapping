@@ -922,6 +922,8 @@ Run: Get-Content .\cps\helper.py | Select-Object -Skip 900 -First 75
 
 Next: Get-Content .\cps\kobo_sync_status.py | Select-Object -Skip 460 -First 55
 
+![image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/87c54a26563fd7dd327fc9d7f8d5e978de6504eb/Screenshot%202026-09-07%20233057.png)
+
 Then: Get-Content .\cps\user_library.py | Select-Object -Skip 480 -First 145
 
 ![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/6ea1b87798306a930b2ce0e7ad146d89e286bd7c/Attack%20Surface%20Mapping/Screenshot%202026-09-03%20205142.png)
