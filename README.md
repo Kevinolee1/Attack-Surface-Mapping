@@ -1005,7 +1005,7 @@ This may produce a lot of output. That's okay—we're initially locating the rel
 
 Then run:Get-ChildItem .\cps -Filter "*oauth*"
 
-![Image alt]()
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/8fba7e4522e0e4881f6b50f3289f276816a6508c/Screenshot%202026-09-07%20233133.png)
 
 And: Get-ChildItem .\cps -Filter "*ldap*"
 
