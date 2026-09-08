@@ -899,6 +899,8 @@ The objective remains to identify where deeper testing should happen in later la
 
 Run: Select-String -Path .\cps\*.py -Pattern "def edit_book_read_status|def change_archived_books" | Select-Object Path, LineNumber, Line
 
+![Image alt](https://github.com/Kevinolee1/Attack-Surface-Mapping/blob/a149f6cddaadf54eb039832f11fa888182450ea5/Attack%20Surface%20Mapping/Screenshot%202026-09-03%20204853.png)
+
 Then: Select-String -Path .\cps\user_library.py -Pattern "def add_book|def remove_book|def removal_impact" |
 Select-Object LineNumber, Line
 
